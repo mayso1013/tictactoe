@@ -4,7 +4,7 @@ var tictactoeDiv = document.querySelector(".tictactoe");
 var playbutton = document.querySelector("#play");
 
 var nodeList = [];
-var size = 3; // 게임의 크기를 정한다.
+var size = 3;
 var turn = -1;
 var playername = "";
 var color = ""; //칼라를 넣어줄 변수를 생성한다.
@@ -23,9 +23,7 @@ var nodeEvent = function(e) {
         }
         target.style.backgroundColor = color;
         turn++;
-        if(turn > (size*2)-2){  
-            /* 여기서 2 는 플레이어의 숫자
-            size 에 어떤수를 입력하더라도 동일한 결과가 나오게 작성해보았다. */
+        if(turn > (size*2)-2){ 
             win_check(target.textContent); 
         } 
     }
@@ -66,7 +64,8 @@ function win_show(){ //승부가 났을경우
         show.classList.add('show');
         tictactoeDiv.appendChild(show);
         if(turn != 0){
-            show.textContent = "[ 무 승 부 ]";
+            show.style.backgroundColor = "#ebdfdf";
+            show.textContent = "∙ 무 승 부 ∙";
         }else{
             show.style.backgroundColor = color;
             show.textContent = playername+" WIN! ∙";
